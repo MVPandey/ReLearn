@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
-from core.logger import logger
+from app.core.logger import logger
 
 app = FastAPI(
     title="Relearn API",
