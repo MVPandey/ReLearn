@@ -58,6 +58,6 @@ class LLMService:
             logger.error(error_message)
             raise LLMException(error_message) from e
         except Exception as e:
-            error_message = f"Failed to query LLM: {e}\n\nResponse: {completion.choices[0].message.content}"
+            error_message = f"Failed to query LLM: {e}"
             logger.error(error_message)
             raise LLMException(error_message) from e
