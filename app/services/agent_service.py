@@ -48,7 +48,7 @@ class AgentService:
         """
 
         graph = StateGraph(self.state)
-        for agent_key, agent_function in self.agent_map.items():
-            graph.add_node(agent_key, agent_function)
+        for agent_function_key, agent_function in self.agent_map.items():
+            graph.add_node(agent_function_key, agent_function)
 
         return graph
