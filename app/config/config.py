@@ -1,4 +1,5 @@
 from pydantic_settings import BaseSettings
+from pydantic import computed_field
 
 
 class AppSettings(BaseSettings):
@@ -19,10 +20,9 @@ class AppSettings(BaseSettings):
         env_prefix = ""
         case_sensitive = True
 
-    @property
-    def database_url(self) -> str:
+    @computed_field
+    def _database_url(self) -> str:
         return f"postgresql+asyncpg://{self.POSTGRES_DB_USER}:{self.POSTGRES_DB_PASSWORD}@{self.POSTGRES_DB_HOST}:{self.POSTGRES_DB_PORT}/{self.POSTGRES_DB_NAME}"
 
 
-# Create a singleton instance
 app_settings = AppSettings()
