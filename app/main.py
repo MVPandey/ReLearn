@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
 from app.core.logger import logger
+from app.api.agents import router as agents_router
 
 app = FastAPI(
     title="Relearn API",
@@ -18,6 +19,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(agents_router)
 
 
 @app.get("/health")
